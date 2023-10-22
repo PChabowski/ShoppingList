@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finanse App</title>
+  <title>Lista Zakupów</title>
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
   <header>
-    <h1>Finanse App</h1>
+    <img src="img/logo.png" width="160" height="40">
   </header>
   <main>
     <div id="task-form">
@@ -20,6 +20,18 @@
       <!-- Lista zadań wypełniona dynamicznie przy uzyciu JavaScriptu -->
     </ul>
   </main>
-  <script src="app.js"></script>
+  <script src="app.js" type="module"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(registration => {
+          console.log('Service Worker zarejestrowany:', registration);
+        })
+        .catch(error => {
+          console.log('Błąd podczas rejestracji Service Workera:', error);
+        });
+    }
+  </script>
+
 </body>
 </html>
