@@ -1,8 +1,9 @@
 import { tasksList } from "./addTaskToArray.js";
 import { deleteTask } from "./deleteTask.js";
+const taskList = document.querySelector("#task-list");
 
-function displayTasksFromArray() {
-    const taskList = document.querySelector("#task-list");
+
+function displayTask() {
     const index = tasksList.length - 1;
     const taskItem = document.createElement('li');
     taskItem.innerHTML = `
@@ -13,7 +14,7 @@ function displayTasksFromArray() {
     deleteTask(taskItem);
 }
 
-function writeAll() {
+function displayAllTasksFromArray() {
     tasksList.forEach(taskText => {
         const taskItem = document.createElement('li');
         taskItem.innerHTML = `
@@ -21,8 +22,9 @@ function writeAll() {
                 <button class="delete-task">Usuń</button>
             `;
         taskList.appendChild(taskItem);
-        //deleteTask(taskItem); zaimportuj jedynie funkcje usuniecia
+        deleteTask(taskItem);
     });
+    console.log(tasksList)
 }
 
-export { displayTasksFromArray };
+export { displayTask, displayAllTasksFromArray };

@@ -1,11 +1,19 @@
+import { tasksList } from "./modules/addTaskToArray.js";
 import { addTaskToArray } from "./modules/addTaskToArray.js";
-import { displayTasksFromArray } from "./modules/displayTaskFromArray.js";
+import { displayAllTasksFromArray, displayTask } from "./modules/displayTaskFromArray.js";
 
 document.addEventListener('DOMContentLoaded', function () {
-    const addTaskButton = document.getElementById('add-task-button');
+  displayAllTasksFromArray();
+  function show() {
+    console.log(tasksList);
+  }
+  const addShowButton = document.getElementById('add-show-button');
+  addShowButton.addEventListener('click', show)
+
+  const addTaskButton = document.getElementById('add-task-button');
   
-    addTaskButton.addEventListener('click', function () {
-      addTaskToArray(); // Wywołaj funkcję addTaskToArray po kliknięciu przycisku
-      displayTasksFromArray();
-    });
+  addTaskButton.addEventListener('click', function () {
+    addTaskToArray(); // Wywołaj funkcję addTaskToArray po kliknięciu przycisku
+    displayTask();
   });
+});
