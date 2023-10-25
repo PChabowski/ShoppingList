@@ -8,8 +8,8 @@ function show() {
 
 document.addEventListener('DOMContentLoaded', function () {
   displayAllTasksFromArray();
-  const addShowButton = document.getElementById('add-show-button');
-  addShowButton.addEventListener('click', show)
+  //const addShowButton = document.getElementById('add-show-button');
+  //addShowButton.addEventListener('click', show)
 
   const addTaskButton = document.getElementById('add-task-button');
   
