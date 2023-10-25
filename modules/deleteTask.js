@@ -1,17 +1,18 @@
 import { tasksList } from "./addTaskToArray.js";
-import { removeFromLocalStorage } from "./funktionLocalStorage.js";
+import { saveToLocalStorage } from "./funktionLocalStorage.js";
 
 function deleteTask(task) {
-    const taskList = document.querySelector("#task-list");
     const deleteButton = task.querySelector('.delete-task');
-    const taskIndex = Array.from(taskList.children).indexOf(task);
+    const index = task.getAttribute('data-id');
 
     deleteButton.addEventListener('click', () => {
-        task.remove();
-        if (taskIndex !== -1) {
-            tasksList.splice(taskIndex);
-            //removeFromLocalStorage(taskIndex); do dopracowania
+        if (index !== -1) {
+            task.remove();
+            tasksList.splice(index, 1);
+            localStorage.clear('taskList');
+            saveToLocalStorage('taskList', JSON.stringify(tasksList));
         }
+        location.reload();
     });
 }
 

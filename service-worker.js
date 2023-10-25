@@ -1,5 +1,5 @@
 // Wersja Service Workera
-const cacheVersion = 'v1';
+const cacheVersion = 'v2';
 
 // Instalacja Service Workera
 self.addEventListener('install', event => {
@@ -12,7 +12,11 @@ self.addEventListener('install', event => {
                 "./app.js",
                 "./manifest.json",
                 "./img/icon.png",
-                "./img/logo.png"
+                "./img/logo.png",
+                "./modules/addTaskToArray.js",
+                "./modules/deleteTask.js",
+                "./modules/displayTaskFromArray.js",
+                "./modules/functionLocalStorage.js"
             ]);
         })
     );
@@ -26,7 +30,7 @@ self.addEventListener('fetch', event => {
             }
             return fetch(event.request);
         })
-    );
+    );v
 });
 
 // Aktualizacja Pamięci podręczne wersji Service Workera

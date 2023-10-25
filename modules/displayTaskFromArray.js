@@ -1,11 +1,16 @@
 import { tasksList } from "./addTaskToArray.js";
 import { deleteTask } from "./deleteTask.js";
 const taskList = document.querySelector("#task-list");
+let i = 0;
 
+function inkrement() {
+    return i++;
+}
 
 function displayTask() {
     const index = tasksList.length - 1;
     const taskItem = document.createElement('li');
+    taskItem.setAttribute('data-id', inkrement());
     taskItem.innerHTML = `
             ${tasksList[index]}
             <button class="delete-task">Usuń</button>
@@ -17,6 +22,7 @@ function displayTask() {
 function displayAllTasksFromArray() {
     tasksList.forEach(taskText => {
         const taskItem = document.createElement('li');
+        taskItem.setAttribute('data-id', inkrement());
         taskItem.innerHTML = `
                 ${taskText}
                 <button class="delete-task">Usuń</button>
@@ -24,7 +30,6 @@ function displayAllTasksFromArray() {
         taskList.appendChild(taskItem);
         deleteTask(taskItem);
     });
-    console.log(tasksList)
 }
 
 export { displayTask, displayAllTasksFromArray };
