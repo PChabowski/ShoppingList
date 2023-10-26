@@ -8,6 +8,7 @@ function inkrement() {
 }
 
 function displayTask() {
+    if (tasksList.length === 0) return;
     const index = tasksList.length - 1;
     const taskItem = document.createElement('li');
     taskItem.setAttribute('data-id', inkrement());
