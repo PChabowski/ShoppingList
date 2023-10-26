@@ -1,8 +1,8 @@
 {
     "name": "Shopping List",
     "short_name": "ShopList",
-    "description": "A simply finanse app menager",
-    "start_url": "/",
+    "description": "App, a simple shopping list.",
+    "start_url": "https://pchabowski.github.io/ShoppingList/",
     "display": "standalone",
     "background_color": "#357ccc",
     "theme_color": "#0078d4",
