@@ -27,11 +27,20 @@ main {
 
 #task-list li {
   display: flex;
+  background-color: #fff;
+  border-radius: 5px;
   justify-content: space-between;
   align-items: center;
   border: 1px solid #ccc;
   padding: 10px;  
   margin-bottom: 10px;
+}
+
+button.delete-task {
+  border: 1px solid black;
+  background-color: #357ccc;
+  border-radius: 5px;
+  padding: 5px 15px;
 }
 
 #task-form {
