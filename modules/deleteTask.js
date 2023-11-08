@@ -9,11 +9,11 @@ function deleteTask(task) {
         if (index !== -1) {
             task.remove();
             tasksList.splice(index, 1);
-            localStorage.clear('taskList');
             saveToLocalStorage('taskList', JSON.stringify(tasksList));
         }
         location.reload();
     });
 }
-
+// Dodać funkcje która za kazdym usunieciem elementu bedzie na nowo wypisywac id
+// elemenów od zera
 export { deleteTask };
