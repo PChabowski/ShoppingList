@@ -1,34 +1,26 @@
 import { tasksList } from "./addTaskToArray.js";
+import { attribute } from "./attribute.js";
 import { deleteTask } from "./deleteTask.js";
 
-const taskList = document.querySelector("#task-list");
-let i = 0;
-
-function inkrement() {
-    return i++;
-}
-
-function displayTask(taskText) {
+function createElement(value) {
+    const taskList = document.querySelector("#task-list");
     const taskItem = document.createElement('li');
-    taskItem.setAttribute('data-id', inkrement());
+    attribute.add(taskItem);
     taskItem.innerHTML = `
-            ${taskText}
+            ${value}
             <button class="delete-task">Usuń</button>
         `;
     taskList.appendChild(taskItem);
     deleteTask(taskItem);
 }
 
+function displayTask(taskText) {
+    createElement(taskText);
+}
+
 function displayAllTasksFromArray() {
     tasksList.forEach(taskText => {
-        const taskItem = document.createElement('li');
-        taskItem.setAttribute('data-id', inkrement());
-        taskItem.innerHTML = `
-                ${taskText}
-                <button class="delete-task">Usuń</button>
-            `;
-        taskList.appendChild(taskItem);
-        deleteTask(taskItem);
+        createElement(taskText);
     });
 }
 

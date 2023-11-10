@@ -1,19 +1,21 @@
 import { tasksList } from "./addTaskToArray.js";
+import { attribute } from "./attribute.js";
 import { saveToLocalStorage } from "./funktionLocalStorage.js";
 
 function deleteTask(task) {
     const deleteButton = task.querySelector('.delete-task');
-    const index = task.getAttribute('data-id');
-
+    
     deleteButton.addEventListener('click', () => {
+        attribute.addAll();
+        const index = task.getAttribute('data-id');
         if (index !== -1) {
             task.remove();
+            console.log(index);
             tasksList.splice(index, 1);
             saveToLocalStorage('taskList', JSON.stringify(tasksList));
         }
-        location.reload();
+        attribute.addAll();
     });
 }
-// Dodać funkcje która za kazdym usunieciem elementu bedzie na nowo wypisywac id
-// elemenów od zera
+
 export { deleteTask };
