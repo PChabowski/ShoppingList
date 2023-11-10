@@ -10,7 +10,6 @@ function deleteTask(task) {
         const index = task.getAttribute('data-id');
         if (index !== -1) {
             task.remove();
-            console.log(index);
             tasksList.splice(index, 1);
             saveToLocalStorage('taskList', JSON.stringify(tasksList));
         }
