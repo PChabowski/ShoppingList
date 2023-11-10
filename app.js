@@ -1,5 +1,4 @@
-import { tasksList } from "./modules/addTaskToArray.js";
-import { addTaskToArray } from "./modules/addTaskToArray.js";
+import { addTaskToArray, tasksList } from "./modules/addTaskToArray.js";
 import { displayAllTasksFromArray, displayTask } from "./modules/displayTaskFromArray.js";
 
 function show() {
@@ -15,14 +14,12 @@ document.addEventListener('DOMContentLoaded', function () {
   
   addTaskButton.addEventListener('click', function () {
     addTaskToArray();
-    displayTask();
   });
 
   const taskInput = document.getElementById('task-input');
   taskInput.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
       addTaskToArray();
-      displayTask();
     }
   });
   
