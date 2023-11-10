@@ -1,5 +1,5 @@
 // Wersja Service Workera
-const cacheVersion = 'v3';
+const cacheVersion = 'v4';
 
 // Instalacja Service Workera
 self.addEventListener('install', event => {
@@ -14,6 +14,8 @@ self.addEventListener('install', event => {
                 "./img/icon.png",
                 "./img/logo.png",
                 "./modules/addTaskToArray.js",
+                "./modules/attibute.js",
+                "./modules/check.js",
                 "./modules/deleteTask.js",
                 "./modules/displayTaskFromArray.js",
                 "./modules/functionLocalStorage.js"
