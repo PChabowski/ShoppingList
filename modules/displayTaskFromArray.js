@@ -2,12 +2,12 @@ import { tasksList } from "./addTaskToArray.js";
 import { attribute } from "./attribute.js";
 import { deleteTask } from "./deleteTask.js";
 
-function createElement(value) {
+function createElementList(text) {
     const taskList = document.querySelector("#task-list");
     const taskItem = document.createElement('li');
     attribute.add(taskItem);
     taskItem.innerHTML = `
-            ${value}
+            ${text}
             <button class="delete-task">Usuń</button>
         `;
     taskList.appendChild(taskItem);
@@ -15,12 +15,12 @@ function createElement(value) {
 }
 
 function displayTask(taskText) {
-    createElement(taskText);
+    createElementList(taskText);
 }
 
 function displayAllTasksFromArray() {
     tasksList.forEach(taskText => {
-        createElement(taskText);
+        createElementList(taskText);
     });
 }
 

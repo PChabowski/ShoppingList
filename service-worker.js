@@ -1,5 +1,5 @@
 // Wersja Service Workera
-const cacheVersion = 'v3';
+const cacheVersion = 'v4';
 
 // Instalacja Service Workera
 self.addEventListener('install', event => {
@@ -7,16 +7,18 @@ self.addEventListener('install', event => {
         caches.open(cacheVersion).then(cache => {
             return cache.addAll([
                 "./",
+                "./app.js",
                 "./index.html",
                 "./main.css",
-                "./app.js",
                 "./manifest.json",
                 "./img/icon.png",
                 "./img/logo.png",
                 "./modules/addTaskToArray.js",
+                "./modules/attribute.js",
+                "./modules/check.js",
                 "./modules/deleteTask.js",
                 "./modules/displayTaskFromArray.js",
-                "./modules/functionLocalStorage.js"
+                "./modules/funktionLocalStorage.js"
             ]);
         })
     );
@@ -33,10 +35,10 @@ self.addEventListener('fetch', event => {
                     .then(response => {
                         caches.open(cacheVersion)
                             .then(cache => cache.put(event.request, response.clone()));
-                            return response;
+                        return response;
                     });
-        })
-    );v
+            })
+    );
 });
 
 // Aktualizacja Pamięci podręczne wersji Service Workera
@@ -47,7 +49,8 @@ self.addEventListener('activate', event => {
                 cacheNames.map(cacheName => {
                     if (cacheName !== cacheVersion) {
                         return caches.delete(cacheName);
-                    }                    
+                    }
+                    return null;
                 })
             );
         })
