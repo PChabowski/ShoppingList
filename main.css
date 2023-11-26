@@ -20,12 +20,14 @@ main {
   padding: 20px;
 }
 
-#task-list {
+#task-list,
+#task-list-done {
   list-style: none;
   padding: 0;
 }
 
-#task-list li {
+#task-list li,
+#task-list-done li {
   display: flex;
   background-color: #fff;
   border-radius: 5px;
@@ -34,6 +36,10 @@ main {
   border: 1px solid #ccc;
   padding: 10px;  
   margin-bottom: 10px;
+}
+
+ul#task-list-done li {
+  background-color: #005c1e;
 }
 
 button.delete-task {
