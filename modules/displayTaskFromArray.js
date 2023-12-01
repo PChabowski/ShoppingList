@@ -31,7 +31,7 @@ function createElementListDone(text) {
     deleteTask(taskItem);
 }
 
-function displayTask(taskText) {
+function displayTask(taskText) { //ta funkcja jest niepotrzeba wystarczy jedna która bedzie wypisywac wszystko z tablicy
     createElementList(taskText);
     createElementListDone(taskText);
 }

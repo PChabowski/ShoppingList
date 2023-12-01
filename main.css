@@ -49,11 +49,15 @@ ul#task-list-done li {
   align-items: center;
 }
 
-button.delete-task {
+.btn-task button {
   border: 1px solid black;
   background-color: #357ccc;
   border-radius: 5px;
   padding: 5px 15px;
+}
+
+.btn-task .delete-task {
+  background-color: #e70a2b;
 }
 
 #task-form,
