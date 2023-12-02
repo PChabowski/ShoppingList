@@ -1,20 +1,18 @@
-import { tasksList } from "./addTaskToArray.js";
-import { attribute } from "./attribute.js";
+import { addAttributeToLi } from "./addAttribute.js";
+import { tasksListDone } from "./doneTask.js";
 import { saveToLocalStorage } from "./funktionLocalStorage.js";
 
 function deleteTask(task) {
     const deleteButton = task.querySelector('.delete-task');
-    let counter = 0;
 
     deleteButton.addEventListener('click', () => {
-        const element = document.querySelectorAll("#task-list-done li");
-        const index = task.getAttribute('data-id');
+        const index = task.getAttribute('task-done-id');
         if (index !== -1) {
             task.remove();
-            tasksList.splice(index, 1);
-            saveToLocalStorage('taskList', JSON.stringify(tasksList));
+            tasksListDone.splice(index, 1);
+            saveToLocalStorage('taskListDone', JSON.stringify(tasksListDone));
         }
-        attribute.addAll(element, counter);
+        addAttributeToLi();
     });
 }
 

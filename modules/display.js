@@ -1,29 +1,33 @@
 import { tasksList } from "./addTaskToArray.js";
-//import { attribute } from "./attribute.js";
-//import { deleteTask } from "./deleteTask.js";
+import { deleteTask } from "./deleteTask.js";
 import { doneTask, tasksListDone } from "./doneTask.js";
-import { Counter } from "./counter.js"
+import { returnTask } from "./returnTask.js";
+import { Counter } from "./counter.js";
+import { addAttributeToLi } from "./addAttribute.js";
+import { addTextandButtonToTask } from "./addTextandButtonToTask.js";
+import { addOnclickToButton } from "./addOnclickToButton.js";
+
+
 
 export const counterElement = new Counter();
 
-function createElement(idParent, nameElement, addNewObj) {
+function createElement(idParent, nameElement) {
     const parent = document.querySelector(idParent);
     const child = document.createElement(nameElement);
-    child.innerHTML = addNewObj;
     parent.appendChild(child);
     // trzeba tak zrobić zeby dodac funkcje do przycisków które sie tu dodaja
 }
 
-function button(option, text) {
+function addButtonOption(option) {
     let btn;
     switch(option) {
         case "done":
-            btn = `${text}<div class="btn-task">
+            btn = `<div class="btn-task">
                         <button class="done-task">Done</button>
                     </div>`;
             break;
         case "undone":
-            btn = `${text}<div class="btn-task">
+            btn = `<div class="btn-task">
                         <button class="delete-task">Delete</button>
                         <button class="done-task">Undone</button>
                     </div>`;
@@ -33,12 +37,23 @@ function button(option, text) {
 }
 
 function displayTasks() { // ulepszyc funkcje wyswietlania taskow
-    tasksList.forEach(taskText => {
-        createElement("#task-list", 'li', button("done", taskText));
+    tasksList.forEach(() => {
+        createElement("#task-list", 'li');
     });
-    tasksListDone.forEach(taskText => {
-        createElement("#task-list-done", 'li', button("undone", taskText));
+    tasksListDone.forEach(() => {
+        createElement("#task-list-done", 'li');
     });
+    addAttributeToLi();
+    
+    // Zrobic jedna petle w której beda w której beda dodane te wszystkie funkcje 
+    // ale przerobic te funkcje tak ze beda dodawac tylko jeden element
+    addTextandButtonToTask("#task-list li", tasksList, addButtonOption("done"));
+    addTextandButtonToTask("#task-list-done li", tasksListDone, addButtonOption("undone"));
+    
+    addOnclickToButton("#task-list li", doneTask);
+    addOnclickToButton("#task-list-done li", returnTask);
+    addOnclickToButton("#task-list-done li", deleteTask);
+    
 }
 
 export { displayTasks, createElement };

@@ -1,19 +1,17 @@
 import { tasksList } from "./addTaskToArray.js";
+import { tasksListDone } from "./doneTask.js";
 import { saveToLocalStorage } from "./funktionLocalStorage.js";
-import { getDateFromLocalStorage } from "./addTaskToArray.js";
 import { addAttributeToLi } from "./addAttribute.js";
 
-const tasksListDone = getDateFromLocalStorage('taskListDone');
-
-function doneTask(task) {
+function returnTask(task) {
     const doneButton = task.querySelector('.done-task');
 
     doneButton.addEventListener('click', () => {
-        const index = task.getAttribute('task-id');
+        const index = task.getAttribute('task-done-id');
         if (index !== -1) {
             task.remove();
-            tasksListDone.push(tasksList[index]);
-            tasksList.splice(index, 1);
+            tasksList.push(tasksListDone[index]);
+            tasksListDone.splice(index, 1);
             saveToLocalStorage('taskList', JSON.stringify(tasksList));
             saveToLocalStorage('taskListDone', JSON.stringify(tasksListDone));
         }
@@ -21,4 +19,4 @@ function doneTask(task) {
     });
 }
 
-export { doneTask, tasksListDone };
+export { returnTask };
