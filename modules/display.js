@@ -39,7 +39,6 @@ function addButtonOption(option) {
 function displayTasks(taskText) { // ulepszyc funkcje wyswietlania taskow
     const element = createElement("#task-list", 'li');
     addAttributeToLi();
-    console.log(element);
 
     addTextAndButtonToTask(element, taskText, addButtonOption("done"));
     doneTask(element);
@@ -48,7 +47,6 @@ function displayTasks(taskText) { // ulepszyc funkcje wyswietlania taskow
 export function displayDoneTasks(taskText) { // ulepszyc funkcje wyswietlania taskow
     const element = createElement("#task-list-done", 'li');
     addAttributeToLi();
-    console.log(element);
 
     addTextAndButtonToTask(element, taskText, addButtonOption("undo"));
     returnTask(element);
