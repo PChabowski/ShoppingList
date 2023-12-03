@@ -14,7 +14,7 @@ function addTaskToArray() {
   const taskText = taskInput.value.trim();
 
   if (taskText === '' || check(tasksList, taskText)) return;
-  displayTasks();
+  displayTasks(taskText);
 
   tasksList.push(taskText);
   saveToLocalStorage('taskList', JSON.stringify(tasksList));

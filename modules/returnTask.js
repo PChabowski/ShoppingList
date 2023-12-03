@@ -2,6 +2,7 @@ import { tasksList } from "./addTaskToArray.js";
 import { tasksListDone } from "./doneTask.js";
 import { saveToLocalStorage } from "./funktionLocalStorage.js";
 import { addAttributeToLi } from "./addAttribute.js";
+import { displayTasks } from "./display.js";
 
 function returnTask(task) {
     const doneButton = task.querySelector('.done-task');
@@ -9,8 +10,9 @@ function returnTask(task) {
     doneButton.addEventListener('click', () => {
         const index = task.getAttribute('task-done-id');
         if (index !== -1) {
-            task.remove();
+            displayTasks(tasksListDone[index]);
             tasksList.push(tasksListDone[index]);
+            task.remove();
             tasksListDone.splice(index, 1);
             saveToLocalStorage('taskList', JSON.stringify(tasksList));
             saveToLocalStorage('taskListDone', JSON.stringify(tasksListDone));

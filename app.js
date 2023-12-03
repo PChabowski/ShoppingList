@@ -1,9 +1,10 @@
-import { addTaskToArray } from "./modules/addTaskToArray.js";
-//import { displayAllTasksFromArray } from "./modules/displayTaskFromArray.js";
-import { displayTasks }  from "./modules/display.js";
+import { addTaskToArray, tasksList } from "./modules/addTaskToArray.js";
+import { tasksListDone } from "./modules/doneTask.js";
+import { displayAllTasks, displayDoneTasks, displayTasks }  from "./modules/display.js";
 
 document.addEventListener('DOMContentLoaded', function () {
-  displayTasks();
+  displayAllTasks(tasksList, displayTasks);
+  displayAllTasks(tasksListDone, displayDoneTasks);  
 
   const addTaskButton = document.getElementById('add-task-button');
 

@@ -4,8 +4,7 @@ import { doneTask, tasksListDone } from "./doneTask.js";
 import { returnTask } from "./returnTask.js";
 import { Counter } from "./counter.js";
 import { addAttributeToLi } from "./addAttribute.js";
-import { addTextandButtonToTask } from "./addTextandButtonToTask.js";
-import { addOnclickToButton } from "./addOnclickToButton.js";
+import { addTextAndButtonToTask } from "./addFunction.js";
 
 
 
@@ -15,45 +14,51 @@ function createElement(idParent, nameElement) {
     const parent = document.querySelector(idParent);
     const child = document.createElement(nameElement);
     parent.appendChild(child);
+    return child;
     // trzeba tak zrobić zeby dodac funkcje do przycisków które sie tu dodaja
 }
 
 function addButtonOption(option) {
     let btn;
-    switch(option) {
+    switch (option) {
         case "done":
             btn = `<div class="btn-task">
                         <button class="done-task">Done</button>
                     </div>`;
             break;
-        case "undone":
+        case "undo":
             btn = `<div class="btn-task">
                         <button class="delete-task">Delete</button>
-                        <button class="done-task">Undone</button>
+                        <button class="done-task">Undo</button>
                     </div>`;
             break;
     }
     return btn;
 }
 
-function displayTasks() { // ulepszyc funkcje wyswietlania taskow
-    tasksList.forEach(() => {
-        createElement("#task-list", 'li');
-    });
-    tasksListDone.forEach(() => {
-        createElement("#task-list-done", 'li');
-    });
+function displayTasks(taskText) { // ulepszyc funkcje wyswietlania taskow
+    const element = createElement("#task-list", 'li');
     addAttributeToLi();
-    
-    // Zrobic jedna petle w której beda w której beda dodane te wszystkie funkcje 
-    // ale przerobic te funkcje tak ze beda dodawac tylko jeden element
-    addTextandButtonToTask("#task-list li", tasksList, addButtonOption("done"));
-    addTextandButtonToTask("#task-list-done li", tasksListDone, addButtonOption("undone"));
-    
-    addOnclickToButton("#task-list li", doneTask);
-    addOnclickToButton("#task-list-done li", returnTask);
-    addOnclickToButton("#task-list-done li", deleteTask);
-    
+    console.log(element);
+
+    addTextAndButtonToTask(element, taskText, addButtonOption("done"));
+    doneTask(element);
+}
+
+export function displayDoneTasks(taskText) { // ulepszyc funkcje wyswietlania taskow
+    const element = createElement("#task-list-done", 'li');
+    addAttributeToLi();
+    console.log(element);
+
+    addTextAndButtonToTask(element, taskText, addButtonOption("undo"));
+    returnTask(element);
+    deleteTask(element);
+}
+
+export function displayAllTasks(list, displayFunction) {
+    list.forEach(text => {
+        displayFunction(text);
+    });
 }
 
 export { displayTasks, createElement };
