@@ -1,42 +1,12 @@
-import { tasksList } from "./addTaskToArray.js";
 import { deleteTask } from "./deleteTask.js";
-import { doneTask, tasksListDone } from "./doneTask.js";
+import { doneTask } from "./doneTask.js";
 import { returnTask } from "./returnTask.js";
-import { Counter } from "./counter.js";
 import { addAttributeToLi } from "./addAttribute.js";
-import { addTextAndButtonToTask } from "./addFunction.js";
+import { addTextAndButtonToTask } from "./addTextAndButton.js";
+import { createElement } from "./createElement.js"
+import { addButtonOption } from "./buttonOption.js"
 
-
-
-export const counterElement = new Counter();
-
-function createElement(idParent, nameElement) {
-    const parent = document.querySelector(idParent);
-    const child = document.createElement(nameElement);
-    parent.appendChild(child);
-    return child;
-    // trzeba tak zrobić zeby dodac funkcje do przycisków które sie tu dodaja
-}
-
-function addButtonOption(option) {
-    let btn;
-    switch (option) {
-        case "done":
-            btn = `<div class="btn-task">
-                        <button class="done-task">Done</button>
-                    </div>`;
-            break;
-        case "undo":
-            btn = `<div class="btn-task">
-                        <button class="delete-task">Delete</button>
-                        <button class="done-task">Undo</button>
-                    </div>`;
-            break;
-    }
-    return btn;
-}
-
-function displayTasks(taskText) { // ulepszyc funkcje wyswietlania taskow
+export function displayTasks(taskText) { // ulepszyc funkcje wyswietlania taskow
     const element = createElement("#task-list", 'li');
     addAttributeToLi();
 
@@ -58,5 +28,3 @@ export function displayAllTasks(list, displayFunction) {
         displayFunction(text);
     });
 }
-
-export { displayTasks, createElement };
