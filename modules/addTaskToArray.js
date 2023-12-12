@@ -1,11 +1,11 @@
 import { saveToLocalStorage, loadFromLocalStorage } from "./funktionLocalStorage.js";
-import { displayTask } from "./displayTaskFromArray.js";
+import { displayTasks } from "./display.js";
 import { check } from "./check.js";
 
-const tasksList = getTaskArrayFromLocalStorage();
+const tasksList = getDateFromLocalStorage('taskList');
 
-function getTaskArrayFromLocalStorage() {
-  const storedTasks = loadFromLocalStorage('taskList');
+export function getDateFromLocalStorage(nameDate) {
+  const storedTasks = loadFromLocalStorage(nameDate);
   return storedTasks ? JSON.parse(storedTasks) : [];
 }
 
@@ -14,7 +14,7 @@ function addTaskToArray() {
   const taskText = taskInput.value.trim();
 
   if (taskText === '' || check(tasksList, taskText)) return;
-  displayTask(taskText);
+  displayTasks(taskText);
 
   tasksList.push(taskText);
   saveToLocalStorage('taskList', JSON.stringify(tasksList));

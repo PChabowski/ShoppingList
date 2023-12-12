@@ -14,12 +14,17 @@ self.addEventListener('install', event => {
                 "./manifest.json",
                 "./img/icon.png",
                 "./img/logo.png",
+                "./modules/addAttribute.js",
                 "./modules/addTaskToArray.js",
-                "./modules/attribute.js",
+                "./modules/addTextAndButton.js",
+                "./modules/buttonOption.js",
                 "./modules/check.js",
+                "./modules/createElement.js",
                 "./modules/deleteTask.js",
-                "./modules/displayTaskFromArray.js",
-                "./modules/funktionLocalStorage.js"
+                "./modules/display.js",
+                "./modules/doneTask.js",
+                "./modules/funktionLocalStorage.js",
+                "./modules/returnTask.js"
             ]);
         })
     );
